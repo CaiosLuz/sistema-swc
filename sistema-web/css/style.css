@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+}
+
+:root {
+    --cor-primaria: #002333;
+    --cor-secundaria: #48b4b6;
+    --cor-terciaria: #B4BEC9;
+    --cor-branca: #FFF;
+    --cor-clara: #EDE8E6;
+    --cor-base: #DEEFE7;
+    --cor-sucesso: #4ed325;
+    --cor-perigo: #9D1221;
+}
+
+.titulo {
+    display: flex;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-clara);
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    padding: 1%;
+}
+
+/* Color Theme Swatches in Hex */
+.Crevasse-1-hex { color: #B4BEC9; }
+.Crevasse-2-hex { color: #159A9C; }
+.Crevasse-3-hex { color: #002333; }
+.Crevasse-4-hex { color: #DEEFE7; }
+.Crevasse-5-hex { color: #FFFFFF; }
+
+/* Color Theme Swatches in RGBA */
+.Crevasse-1-rgba { color: rgba(179, 189, 200, 1); }
+.Crevasse-2-rgba { color: rgba(20, 154, 156, 1); }
+.Crevasse-3-rgba { color: rgba(0, 35, 51, 1); }
+.Crevasse-4-rgba { color: rgba(221, 239, 230, 1); }
+.Crevasse-5-rgba { color: rgba(255, 255, 255, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Crevasse-1-hsla { color: hsla(211, 16, 74, 1); }
+.Crevasse-2-hsla { color: hsla(180, 76, 34, 1); }
+.Crevasse-3-hsla { color: hsla(198, 100, 10, 1); }
+.Crevasse-4-hsla { color: hsla(151, 34, 90, 1); }
+.Crevasse-5-hsla { color: hsla(0, 0, 100, 1); }
