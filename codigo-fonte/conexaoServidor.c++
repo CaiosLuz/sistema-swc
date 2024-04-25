@@ -13,7 +13,7 @@ void IRAM_ATTR pulseCounter() {
     pulseCount++;
 }
 
-IPAddress server(192,168,0,114);
+IPAddress server(172,17,97,203);
 
 WiFiClient client;
 
@@ -22,6 +22,7 @@ float litroMinuto;
 void setup() {
   WiFi.begin(ssid, pass);
 
+  Serial.begin(9600); // Inicializa a comunicação serial
   pinMode(sensorPin, INPUT_PULLUP); // Configura o pino do sensor como entrada com pull-up interno
   attachInterrupt(digitalPinToInterrupt(sensorPin), pulseCounter, RISING); // Configura a interrupção para contar os pulsos
   pulseCount = 0; // Inicializa o contador de pulsos
@@ -35,18 +36,18 @@ void setup() {
 
 void loop(){
   unsigned long currentMillis = millis();
-    unsigned long elapsedTime = currentMillis - lastMillis;
+  unsigned long elapsedTime = currentMillis - lastMillis;
 
-    if (elapsedTime >= measurementInterval) { // Calcula a taxa de fluxo a cada minuto
-        detachInterrupt(sensorPin); // Desativa a interrupção para evitar condições de corrida
-        float flowRate = (pulseCount / pulsesPerLiter) / (measurementInterval / 60000.0); // Calcula a taxa de fluxo em litros por minuto
-        Serial.print("Fluxo de água por minuto: ");
-        Serial.print(flowRate);
-        litroMinuto = flowRate;
-        Serial.println(" L/min");
-        pulseCount = 0; // Reinicia o contador de pulsos
-        lastMillis = currentMillis; // Atualiza o tempo da última leitura
-        attachInterrupt(digitalPinToInterrupt(sensorPin), pulseCounter, RISING); // Reativa a interrupção
+  if (elapsedTime >= measurementInterval) { // Calcula a taxa de fluxo a cada minuto
+    detachInterrupt(sensorPin); // Desativa a interrupção para evitar condições de corrida
+    float flowRate = (pulseCount / pulsesPerLiter) / (measurementInterval / 60000.0); // Calcula a taxa de fluxo em litros por minuto
+    Serial.print("Fluxo de água por minuto: ");
+    Serial.print(flowRate);
+    litroMinuto = flowRate;
+    Serial.println(" L/min");
+    pulseCount = 0; // Reinicia o contador de pulsos
+    lastMillis = currentMillis; // Atualiza o tempo da última leitura
+    attachInterrupt(digitalPinToInterrupt(sensorPin), pulseCounter, RISING); // Reativa a interrupção
     }
 
   if(isnan(litroMinuto)) {
@@ -57,21 +58,22 @@ void loop(){
     if(client.connect(server, 80)) {
       Serial.println("Conexão com o servidor");
       client.printf("GET /sistema-swc/lib/config.php?litroMinuto=%f2.2HTTP/1.1\r\n", litroMinuto);
-      client.println("Host: 192.168.0.114:80");
+      client.println("Host: 172.17.97.203:80");
       client.println("Conexao fechada");
       client.println();
     }
-    delay(1000);
+    delay(60000);
 
     while(!client.connected()) {
       Serial.println("Fim de conexao");
-      if(response.indexOf("sucesso") >= 0) 
+      if(response.indexOf("sucesso") >= 0) {
         sucess();
-        else 
+      }else {
         error();
         client.stop(); 
-    }
+      }
     delay(60000);
+    }
   }
 }
 
