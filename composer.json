@@ -1,0 +1,14 @@
+{
+    "name": "caioj/sistema-swc",
+    "description": "sistema para controle do fluxo de água de uma residência",
+    "type": "project",
+    "license": "mit license",
+    "authors": [
+        {
+            "name": "CaiosLuz",
+            "email": "125562747+CaiosLuz@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {}
+}

@@ -13,14 +13,14 @@ void IRAM_ATTR pulseCounter() {
     pulseCount++;
 }
 
-IPAddress server(172,17,97,203);
+IPAddress server(192,168,0,111);
 
 WiFiClient client;
 
 float litroMinuto;
 
 void setup() {
-  WiFi.begin(ssid, pass);
+    WiFi.begin(ssid, pass);
 
   Serial.begin(9600); // Inicializa a comunicação serial
   pinMode(sensorPin, INPUT_PULLUP); // Configura o pino do sensor como entrada com pull-up interno
@@ -28,15 +28,15 @@ void setup() {
   pulseCount = 0; // Inicializa o contador de pulsos
   lastMillis = millis(); // Inicializa o tempo da última leitura
 
-  while (WiFi.status() != WL_CONNECTED) {
+    while (WiFi.status() != WL_CONNECTED) {
     Serial.println(".");
     delay(500);
-  }
+    }
 }
 
 void loop(){
-  unsigned long currentMillis = millis();
-  unsigned long elapsedTime = currentMillis - lastMillis;
+    unsigned long currentMillis = millis();
+    unsigned long elapsedTime = currentMillis - lastMillis;
 
   if (elapsedTime >= measurementInterval) { // Calcula a taxa de fluxo a cada minuto
     detachInterrupt(sensorPin); // Desativa a interrupção para evitar condições de corrida
@@ -50,36 +50,36 @@ void loop(){
     attachInterrupt(digitalPinToInterrupt(sensorPin), pulseCounter, RISING); // Reativa a interrupção
     }
 
-  if(isnan(litroMinuto)) {
+    if(isnan(litroMinuto)) {
     error();
-  }else{
+    }else{
     String response = "";
 
     if(client.connect(server, 80)) {
-      Serial.println("Conexão com o servidor");
-      client.printf("GET /sistema-swc/lib/config.php?litroMinuto=%f2.2HTTP/1.1\r\n", litroMinuto);
-      client.println("Host: 172.17.97.203:80");
-      client.println("Conexao fechada");
-      client.println();
+        Serial.println("Conexão com o servidor");
+        client.printf("GET /sistema-swc/config/database.php?litroMinuto=%f2.2HTTP/1.1\r\n", litroMinuto);
+        client.println("Host: 192.168.0.111:80");
+        client.println("Conexao fechada");
+        client.println();
     }
     delay(60000);
 
     while(!client.connected()) {
-      Serial.println("Fim de conexao");
-      if(response.indexOf("sucesso") >= 0) {
+        Serial.println("Fim de conexao");
+        if(response.indexOf("sucesso") >= 0) {
         sucess();
-      }else {
+        }else {
         error();
         client.stop(); 
-      }
+        }
     delay(60000);
     }
-  }
+    }
 }
 
 void sucess(){
-  Serial.println("sucesso");
+    Serial.println("sucesso");
 }
 void error(){
-  Serial.println("erro");
+    Serial.println("erro");
 }
