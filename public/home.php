@@ -23,7 +23,7 @@
         $controller = new ConsumoAguaController($db);
         $consumoAguaDia = $controller->getConsumoAguaDia();
         $view = new ConsumoAguaView();
-        $consumoMinuto = $controller->getConsumoAgua();
+        $resultado = $controller->getConsumoAguaDia();
 
     } catch (PDOException $e) {
         echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
@@ -32,7 +32,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,7 @@
     <div class="wrapper">
     <div class="back"></div>
     <video autoplay loop muted playsinline class="back-video">
-        <source src="img/mar.mp4" type="video/mp4">
+        <!-- <source src="img/mar.mp4" type="video/mp4"> -->
     </video>
     <nav class="nav">
         <div class="nav-logo">
@@ -67,17 +67,21 @@
     <div class="home-content">
         <h1>Monitore seu consumo de água!</h1>
         <div class="windows">
-            <?php foreach ($consumoAguaDia as $dia => $totalLitros){ ?>
-                <div class="window" id="window1"><?= $dia . "<br>" . $totalLitros ?></div>
+                <div class="window" id="window1"><?= $resultado['totalLitros'] ?></div>
                 <div class="window" id="window2"></div>
                 <div class="window" id="window3"></div>
                 <div class="window" id="window4"></div>
-                <?php } ?>
         </div>
     </div>
 </div>   
 
 <script>
+
+    // Função para atualizar a pagina automaticamente para obter resultado simultaneo
+    setTimeout(function() {
+        location.reload();
+    }, 2000);
+
     function logout() {
         // Aqui você pode adicionar a lógica para fazer logout, se necessário
         alert("Logout realizado com sucesso!");

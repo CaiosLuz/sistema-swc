@@ -24,14 +24,15 @@ class ConsumoAguaController{
 
     public function getConsumoAguaDia() {
         $consumoAguaDia = [];
-        $query = 'SELECT DATE(data_hora) as dia, SUM(litroMinuto) as totalLitros FROM medicoes GROUP BY dia';
-        $stmt = $this->db->query($query);
+        $dataAtual = date('Y-m-d');
+        $query = 'SELECT SUM(litroMinuto) AS totalLitros FROM medicoes WHERE DATE(data_hora) = :dataAtual';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':dataAtual', $dataAtual, PDO::PARAM_STR);
+        $stmt->execute();
 
-        while ($row = $stmt->fetch()) {
-            $consumoAguaDia[$row['dia']] = $row['totalLitros'];
-        }
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $consumoAguaDia;
+        return $resultado;
     }
     
 }
