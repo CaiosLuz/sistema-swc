@@ -1,28 +1,38 @@
 <?php
 
-date_default_timezone_set('America/Sao_Paulo');
+    return [
+        'host' => 'localhost',
+        'dbname' => 'sistemaSwc',
+        'username' => 'root',
+        'password' => '',
+    ];
 
-$litroMinuto = $_GET['litroMinuto'];
+    date_default_timezone_set('America/Sao_Paulo');
 
-$dbh;
-$stmt;
 
-$connStr = 'mysql:host=localhost;dbname=SistemaSwc';
+    $litroMinuto = isset($_POST['litroMinuto']) ? $_POST['litroMinuto'] : (isset($_GET['litroMinuto']) ? $_GET['litroMinuto'] : '');
 
-try {
-    $dbh = new PDO($connStr, 'root', '');
-} catch (PDOException $e) {
-    echo $e->getMessage();
-    die();
-}
+    $dbh;
+    $stmt;
 
-$stmt = $dbh->prepare('INSERT INTO medicoes(litroMinuto, data_hora) VALUES (:litroMinuto, :data_hora)');
+    $connStr = 'mysql:host=localhost;dbname=SistemaSwc';
 
-$stmt->bindValue(':litroMinuto', $litroMinuto);
-$stmt->bindValue(':data_hora', date("Y-m-d H:i:s"));
+    try {
+        $dbh = new PDO($connStr, $username, $password);
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        die();
+    }
 
-if ($stmt->execute()) {
-    echo "Sucesso";
-} else {
-    echo "Erro";
-}
+    $stmt = $dbh->prepare('INSERT INTO medicoes(litroMinuto, data_hora) VALUES (:litroMinuto, :data_hora)');
+
+    $stmt->bindValue(':litroMinuto', $litroMinuto);
+    $stmt->bindValue(':data_hora', date("Y-m-d H:i:s"));
+
+    if ($stmt->execute()) {
+        echo "Sucesso";
+    } else {
+        echo "Erro";
+    }
+
+?>
