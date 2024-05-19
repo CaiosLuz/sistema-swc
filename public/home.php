@@ -9,8 +9,6 @@
     $username = $config['username'];
     $password = $config['password'];
 
-    
-
     try {
         $config = require_once '../config/database.php';
         $dsn = "mysql:host=$host;dbname=$dbname";
@@ -42,10 +40,10 @@
     <title>SWC - Página Inicial</title>
 </head>
 <body>
-    <div class="wrapper">
+<div class="wrapper">
     <div class="back"></div>
     <video autoplay loop muted playsinline class="back-video">
-        <!-- <source src="img/mar.mp4" type="video/mp4"> -->
+        <source src="./img/mar.mp4" type="video/mp4">
     </video>
     <nav class="nav">
         <div class="nav-logo">
@@ -55,7 +53,7 @@
             <ul>
                 <li><a href="#" class="link active">Home</a></li>
                 <li><a href="#" class="link">Estatísticas</a></li>
-                <li><a href="../sobre/sobrenos.html" class="link">Sobre nós</a></li>
+                <li><a href="./sobrenos.php" class="link">Sobre nós</a></li>
             </ul>
         </div>
         <div class="nav-button">
@@ -65,12 +63,9 @@
 
 <!----------------------------- Conteúdo da Página Inicial ----------------------------------->    
     <div class="home-content">
-        <h1>Monitore seu consumo de água!</h1>
+        <h1>Monitore seu consumo diário de água!</h1>
         <div class="windows">
-                <div class="window" id="window1"><?= $resultado['totalLitros'] ?></div>
-                <div class="window" id="window2"></div>
-                <div class="window" id="window3"></div>
-                <div class="window" id="window4"></div>
+            <div class="window" id="window1"><?= $resultado['totalLitros'] ?></div>
         </div>
     </div>
 </div>   
@@ -80,7 +75,7 @@
     // Função para atualizar a pagina automaticamente para obter resultado simultaneo
     setTimeout(function() {
         location.reload();
-    }, 2000);
+    }, 60000);
 
     function logout() {
         // Aqui você pode adicionar a lógica para fazer logout, se necessário
