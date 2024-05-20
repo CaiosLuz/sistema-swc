@@ -23,8 +23,8 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <ul>
-                <li><a href="../home/home.html" class="link">Home</a></li>
-                <li><a href="../" class="link">Estatísticas</a></li>
+                <li><a href="./home.php" class="link">Home</a></li>
+                <li><a href="./estatistica.php" class="link">Estatísticas</a></li>
                 <li><a href="#" class="link active">Sobre nós</a></li>
             </ul>
         </div>
@@ -43,9 +43,9 @@
                 <div class="main">Matheus</div>
                 <div class="sub">Frontend</div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/matheus" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/matheus" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/matheus" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/matheuspereiraoliveira/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/matheuspdo/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/lVMatheus" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             </div>
@@ -57,9 +57,9 @@
                 <div class="main">Caio</div>
                 <div class="sub">Backend e QA</div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/caio" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/caio" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/caio" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/caio-jos%C3%A9-soares-da-luz-67352a264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/caiojsdl?igsh=MTY4eG1pcjE3MnRkbw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/CaiosLuz" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             </div>
@@ -71,9 +71,9 @@
                 <div class="main">João</div>
                 <div class="sub">Documentação</div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/joao" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/joao" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/joao" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jo%C3%A3o-paulo-ribeiro-139890305?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/joaoaokk/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/joaoprbp" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             </div>
@@ -85,9 +85,9 @@
                 <div class="main">Henrique</div>
                 <div class="sub">Database</div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/henrique" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/henrique" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/henrique" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/henrique-mashiba-a57aaa305?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/henrique_.ym?igsh=ZXNheDd0YzY4dnlk&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Hiquezin16" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             </div>
@@ -99,8 +99,8 @@
                 <div class="main">Matheus Felix</div>
                 <div class="sub">Hardware</div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/matheus-felix" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/matheus-felix" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/matheus-felix-473609306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/mfelixxs/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://github.com/Felixx10" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>

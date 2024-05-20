@@ -1,31 +1,11 @@
 <?php 
 
-    date_default_timezone_set('America/Sao_Paulo');
-
     $config = require_once '../config/database.php';
+    $db = new PDO("mysql:host={$config['host']};dbname{$config['dbname']}", $config['username'], $config['password']);
 
-    $host = $config['host'];
-    $dbname = $config['dbname'];
-    $username = $config['username'];
-    $password = $config['password'];
-
-    try {
-        $config = require_once '../config/database.php';
-        $dsn = "mysql:host=$host;dbname=$dbname";
-        $db = new PDO($dsn, $username, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        require_once '../app/controller/consumoAguaController.php';
-        require_once '../app/view/consumoAguaView.php';
-
-        $controller = new ConsumoAguaController($db);
-        $consumoAguaDia = $controller->getConsumoAguaDia();
-        $view = new ConsumoAguaView();
-        $resultado = $controller->getConsumoAguaDia();
-
-    } catch (PDOException $e) {
-        echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
-    }
+    require_once '../app/controller/consumoAguaController.php';
+    $controller = new ConsumoAguaController($db);
+    $consumoAguaDia = $controller->model->getConsumoAguaDia();
 
 ?>
 
@@ -47,12 +27,12 @@
     </video>
     <nav class="nav">
         <div class="nav-logo">
-            <p>SWC</p>
+            <p><img src="./img/logo-swc.png" alt="Logo SWC"></p>
         </div>
         <div class="nav-menu" id="navMenu">
             <ul>
                 <li><a href="#" class="link active">Home</a></li>
-                <li><a href="#" class="link">Estatísticas</a></li>
+                <li><a href="./estatistica.php" class="link">Estatísticas</a></li>
                 <li><a href="./sobrenos.php" class="link">Sobre nós</a></li>
             </ul>
         </div>
@@ -126,4 +106,3 @@
 
 </body>
 </html>
-

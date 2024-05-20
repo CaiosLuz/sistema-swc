@@ -1,40 +1,40 @@
 <?php 
 
-require_once 'consumoAgua.php';
+    require_once './consumoAguaModel.php';
 
-class ConsumoAguaController{
-    private $db;
+    class ConsumoAguaController{
+        private $model;
 
-    public function __construct($db){
-        $this->db = $db;
-    }
-
-    public function getConsumoAgua() {
-        $consumoAguaList = [];
-        $query = "SELECT * FROM medicoes";
-        $stmt = $this->db->query($query);
-
-        while($row = $stmt->fetch()){
-            $consumoAgua = new ConsumoAguaModels($row['id_medicao'], $row['litroMinuto'], $row['data_hora']);
-            $consumoAguaList[] = $consumoAgua; 
+        public function __construct($db){
+            $this->model = new ConsumoAguaModel($db);
         }
 
-        return $consumoAguaList;
+        public function handleRequest($action){
+            switch ($action) {
+                case 'consumoDia':
+                    $data = $this->model->getConsumoAguaDia();
+                    header('Content-Type: application/json');
+                    echo json_encode($data);
+                    break;
+                case 'consumoPeriodo':
+                    $range = isset($_GET['range']) ? $_GET['range'] : 'diario';
+                    $data = $this->model->getConsumoAguaPorPeriodo($range);
+                    header('Content-Type: application/json');
+                    echo json_encode($data);
+                    break;
+                default:
+                    echo json_encode([]);
+                    break;
+            }
+        }
     }
+        
 
-    public function getConsumoAguaDia() {
-        $consumoAguaDia = [];
-        $dataAtual = date('Y-m-d');
-        $query = 'SELECT SUM(litroMinuto) AS totalLitros FROM medicoes WHERE DATE(data_hora) = :dataAtual';
-        $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':dataAtual', $dataAtual, PDO::PARAM_STR);
-        $stmt->execute();
+    $config = include('../../config/database.php');
+    $db = new PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['username'], $config['password']);
 
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $resultado;
-    }
-    
-}
+    $controller = new ConsumoAguaController($db);
+    $action = isset($_GET['action']) ? $_GET['action'] : 'consumoDia';
+    $controller->handleRequest($action);
 
 ?>

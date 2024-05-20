@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 *{  
-    margin: -10;
+    margin: 0; /* Ajustado para remover margem negativa */
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
@@ -13,10 +13,9 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     z-index: 0;
-    /* overflow: hidden; */ /* Vamos remover esta linha */
 }
 .back{
-    position: fixed; /* Mude para fixed */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -27,48 +26,12 @@ body {
     background: #000000ad;
     z-index: -3;
 }
-/* Seu CSS existente pode ser mantido aqui ou atualizado conforme necessário */
-/* Adicionei estilos para os novos elementos */
-.home-content {
-    padding: 50px;
-    text-align: center;
-    color: white;
-}
-
-.home-content h1 {
-    font-size: 36px;
-}
-
-.home-content p {
-    font-size: 18px;
-    margin-top: 20px;
-}
-.windows {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 50px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 4;
-}
-.window {
-    width: calc(50% - 20px); /* 50% da largura menos as margens */
-    height: 200px;
-    background-color: #010a1b;
-    margin-bottom: 20px;
-    transition: transform 0.3s, background-color 0.3s;
-    border-radius: 20px;
-    box-shadow: inset 6px 6px 100px #010a1b,
-    inset -6px -6px 100px #010a1b;
-}
-.window:hover {
-    transform: scale(1.2); /* Aumenta o tamanho da janela quando o mouse está sobre ela */
-    background-color: #07343d; /* Altera a cor de fu    ndo da janela */
+.nav-logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção da imagem */
 }
 .wrapper{
-    position: fixed; /* Mude para fixed */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -81,13 +44,13 @@ body {
 }
 .back-video {
     position: absolute;
-    top: 50%; /* Alinhar o topo do vídeo ao meio do contêiner pai */
-    left: 50%; /* Alinhar a esquerda do vídeo ao meio do contêiner pai */
-    transform: translate(-50%, -50%); /* Centralizar o vídeo */
-    min-width: 100%; /* Garantir que o vídeo cubra a largura do contêiner */
-    min-height: 100%; /* Garantir que o vídeo cubra a altura do contêiner */
-    width: auto; /* Permitir que o vídeo dimensione corretamente */
-    height: auto; /* Permitir que o vídeo dimensione corretamente */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
     z-index: -4;
 }
 .nav{
@@ -98,7 +61,7 @@ body {
     width: 100%;
     height: 100px;
     line-height: 100px;
-    background: rgba(rgba(255, 0, 0, 0));
+    background: rgba(255, 0, 0, 0);
     z-index: 100;
 }
 .nav-logo p{
@@ -325,25 +288,29 @@ header{
     font-size: 18px;
     margin-top: 20px;
 }
-/* Estilo para a gota e o texto */
-.drop-image,
-.drop-text {
-    display: none; /* Inicialmente oculta a gota e o texto */
+/* Centralizando as divs .window e .windows */
+.windows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 50px;
+    max-width: 800px; /* Ajuste conforme necessário */
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 4;
 }
-
-.drop-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.window {
+    width: calc(50% - 20px); /* 50% da largura menos as margens */
+    height: 200px;
+    background-color: #010a1b;
+    margin: 10px; /* Ajusta a margem para um espaçamento uniforme */
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 20px;
+    box-shadow: inset 6px 6px 100px #010a1b,
+                inset -6px -6px 100px #010a1b;
 }
-
-.drop-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 16px;
-    text-align: center;
+.window:hover {
+    transform: scale(1.2); /* Aumenta o tamanho da janela quando o mouse está sobre ela */
+    background-color: #07343d; /* Altera a cor de fundo da janela */
 }
