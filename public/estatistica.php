@@ -7,6 +7,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./css/home.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <title>SWC - Estatísticas</title>
 </head>
 <body>
@@ -48,7 +50,6 @@
 
             <div id="chart_div"></div>
 
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script>
 
                 async function fetchData(range) {

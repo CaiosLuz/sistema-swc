@@ -1,6 +1,6 @@
 <?php 
 
-    require_once './consumoAguaModel.php';
+    require_once '../app/model/consumoAgua.php';
 
     class ConsumoAguaController{
         private $model;
@@ -9,17 +9,19 @@
             $this->model = new ConsumoAguaModel($db);
         }
 
+        public function getModel(){
+            return $this->model;
+        }
+
         public function handleRequest($action){
             switch ($action) {
                 case 'consumoDia':
                     $data = $this->model->getConsumoAguaDia();
-                    header('Content-Type: application/json');
                     echo json_encode($data);
                     break;
                 case 'consumoPeriodo':
                     $range = isset($_GET['range']) ? $_GET['range'] : 'diario';
                     $data = $this->model->getConsumoAguaPorPeriodo($range);
-                    header('Content-Type: application/json');
                     echo json_encode($data);
                     break;
                 default:
@@ -30,7 +32,7 @@
     }
         
 
-    $config = include('../../config/database.php');
+    $config = include('../config/database.php');
     $db = new PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['username'], $config['password']);
 
     $controller = new ConsumoAguaController($db);

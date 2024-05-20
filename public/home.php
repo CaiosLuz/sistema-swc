@@ -5,7 +5,16 @@
 
     require_once '../app/controller/consumoAguaController.php';
     $controller = new ConsumoAguaController($db);
-    $consumoAguaDia = $controller->model->getConsumoAguaDia();
+
+    $action = isset($_GET['action']) ? $_GET['action'] : 'consumoDia';
+    $controller->handleRequest($action);
+
+    $resultado = [];
+    $consumoAguaDia = $controller->getModel()->getConsumoAguaDia();
+
+    if($consumoAguaDia) {
+        $resultado = $consumoAguaDia;
+    }
 
 ?>
 
