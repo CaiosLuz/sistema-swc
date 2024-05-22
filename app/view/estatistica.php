@@ -67,13 +67,13 @@
 
                     var dataTable = new google.visualization.DataTable();
                     dataTable.addColumn('string', 'Período');
-                    dataTable.addColumn('number', 'Total de litros');
+                    dataTable.addColumn('number', 'Total de litros: ');
                     dataTable.addRows(chartData);
 
                     var options = {
-                        title: 'Gasto de água por período',
-                        width: 600,
-                        height: 500
+                        title: `Gasto de água por período (${periodo.charAt(0).toUpperCase() + periodo.slice(1)})`,
+                        width: 800,
+                        height: 700
                     };
 
                     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

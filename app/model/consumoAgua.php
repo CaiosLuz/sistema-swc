@@ -10,13 +10,13 @@
         public function getConsumoAguaPorPeriodo($range) {
             switch ($range) {
                 case 'diario':
-                    $query = "SELECT DATE(data_hora) AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY label ORDER BY label";
+                    $query = "SELECT DATE_FORMAT(data_hora, '%d/%m') AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY DATE(data_hora) ORDER BY DATE(data_hora);";
                     break;
                 case 'semanal':
-                    $query = "SELECT YEAR(data_hora) AS year, WEEK(data_hora) AS week, CONCAT(YEAR(data_hora), '-W', WEEK(data_hora)) AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY year, week ORDER BY year, week";
+                    $query = "SELECT YEAR(data_hora) AS year, WEEK(data_hora) AS week, CONCAT(WEEK(data_hora), ' - Semana ', YEAR(data_hora)) AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY year, week ORDER BY year, week";
                     break;
                 case 'mensal':
-                    $query = "SELECT YEAR(data_hora) AS year, MONTH(data_hora) AS month, CONCAT(YEAR(data_hora), '-', LPAD(MONTH(data_hora), 2, '0')) AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY year, month ORDER BY year, month";
+                    $query = "SELECT MONTH(data_hora) AS month, YEAR(data_hora) AS year, CONCAT(MONTH(data_hora), '-', LPAD(YEAR(data_hora), 4, '0')) AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY year, month ORDER BY year, month";
                     break;
                 case 'anual':
                     $query = "SELECT YEAR(data_hora) AS label, SUM(litroMinuto) AS totalLitro FROM medicoes GROUP BY label ORDER BY label";
