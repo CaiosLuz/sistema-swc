@@ -7,3 +7,10 @@ CREATE TABLE medicoes (
     data_hora DATETIME,
     PRIMARY KEY (id_medicao)
 );
+
+CREATE TABLE usuarios (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100),
+    Email VARCHAR(100) UNIQUE,
+    Senha VARCHAR(255)
+);

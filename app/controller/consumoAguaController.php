@@ -1,6 +1,6 @@
 <?php 
 
-    require_once '../app/model/consumoAgua.php';
+    require_once '../model/consumoAgua.php';
 
     class ConsumoAguaController{
         private $model;
@@ -30,9 +30,8 @@
             }
         }
     }
-        
 
-    $config = include('../config/database.php');
+    $config = include('../../config/database.php');
     $db = new PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['username'], $config['password']);
 
     $controller = new ConsumoAguaController($db);
