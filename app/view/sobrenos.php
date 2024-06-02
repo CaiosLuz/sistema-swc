@@ -36,7 +36,7 @@
     <div class="home-content">
         <h1>Os membros do projeto!</h1>
         <div class="options">
-        <div class="option active" style="--optionBackground:url(./img/Matheus.png);">
+        <div class="option active" style="--optionBackground:url(../img/Matheus.png);">
             <div class="shadow"></div>
             <div class="label">
             <div class="info">
@@ -50,7 +50,7 @@
             </div>
             </div>
         </div>
-        <div class="option" style="--optionBackground:url(./img/Caio.png);">
+        <div class="option" style="--optionBackground:url(../img/Caio.png);">
             <div class="shadow"></div>
             <div class="label">
             <div class="info">
@@ -64,7 +64,7 @@
             </div>
             </div>
         </div>
-        <div class="option" style="--optionBackground:url(./img/J.png);">
+        <div class="option" style="--optionBackground:url(../img/J.png);">
             <div class="shadow"></div>
             <div class="label">
             <div class="info">
@@ -78,7 +78,7 @@
             </div>
             </div>
         </div>
-        <div class="option" style="--optionBackground:url(./img/Henrique.png);">
+        <div class="option" style="--optionBackground:url(../img/Henrique.jpg);">
             <div class="shadow"></div>
             <div class="label">
             <div class="info">
@@ -92,7 +92,7 @@
             </div>
             </div>
         </div>
-        <div class="option" style="--optionBackground:url(./img/Felix.png);">
+        <div class="option" style="--optionBackground:url(../img/Felix.jpg);">
             <div class="shadow"></div>
             <div class="label">
             <div class="info">

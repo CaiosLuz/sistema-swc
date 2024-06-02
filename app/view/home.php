@@ -54,7 +54,8 @@
     <div class="home-content">
         <h1>Monitore seu consumo diário de água!</h1>
         <div class="windows">
-            <div class="window" id="window1"><?= $resultado['totalLitros'] ?></div>
+        <!-- php $resultado['totalLitros']  -->
+            <div class="window" id="window1"></div>
         </div>
     </div>
 </div>   
@@ -77,10 +78,10 @@
     var windows = document.querySelectorAll('.window');
 
     // Cria a gota e o texto
-    var dropImage = document.createElement('img');
-    dropImage.src = 'images/gota.png'; // Coloque o caminho real da sua imagem
-    dropImage.alt = 'Gota';
-    dropImage.classList.add('drop-image');
+    // var dropImage = document.createElement('img');
+    // dropImage.src = ''; // Coloque o caminho real da sua imagem
+    // dropImage.alt = 'Gota';
+    // dropImage.classList.add('drop-image');
 
     var dropText = document.createElement('p');
     dropText.classList.add('drop-text');
@@ -94,7 +95,7 @@
             this.style.backgroundColor = '#07343d'; // Altera a cor de fundo da janela
 
             // Adiciona a gota e o texto à window
-            this.appendChild(dropImage.cloneNode(true));
+            // this.appendChild(dropImage.cloneNode(true));
             this.appendChild(dropText.cloneNode(true));
         });
 
